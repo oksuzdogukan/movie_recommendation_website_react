@@ -7,9 +7,9 @@ function Home() {
 
   
   return (
-    <main className="h-[70vh]  flex flex-col items-center justify-center ">
+    <main className="h-[70vh]  flex flex-col items-center justify-center">
       
-      <div className="text-5xl font-bold mb-12">
+      <div className="text-5xl font-bold mb-12 text-center">
         LET'S EXPLORE MOVIES!
       </div>
 

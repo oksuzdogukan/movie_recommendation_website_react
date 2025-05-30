@@ -6,7 +6,7 @@ function Footer() {
 
 
   return (
-    <div className="bg-[#6080a0]  p-7 text-center">
+    <div className="bg-[#2c3e50]  p-7 text-center">
 
       <div>© 2025 MovieMind. All rights reserved.</div>
 
