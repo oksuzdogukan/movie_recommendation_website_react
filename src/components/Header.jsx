@@ -7,10 +7,11 @@ import Hamburger from 'hamburger-react'
 
 function Header() {
 
-  const [isOpen, setIsOpen] = useState(false)
-    const toggleDrawer = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDrawer = () => {
         setIsOpen((prevState) => !prevState)
-    }
+  }
 
   
 
@@ -19,10 +20,12 @@ function Header() {
 
       <div className='container mx-auto px-5 flex items-center h-full '>
 
+        {/* WebSite Logo */}
         <Link to={"/"}>
-          <span className='text-xl font-bold text-indigo-50'>Movei Mind</span>
+          <span className='text-xl font-bold text-indigo-50'>Movei <span className='text-blue-400'>Mind</span></span>
         </Link>
 
+        {/* Menu Navigation */}
         <nav className='hidden md:flex items-center gap-6 ml-auto'> 
           {
             navigations.map((nav, index) => {
@@ -56,7 +59,7 @@ function Header() {
               {
                 navigations.map((nav, index) => {
                   return(
-                    <div>
+                    <div key={nav.label + index}>
                       <NavLink
                         key={nav.label + index}
                         to={nav.href}
