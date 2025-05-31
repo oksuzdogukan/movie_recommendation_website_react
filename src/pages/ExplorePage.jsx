@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import MovieGenreBtn from "../components/MovieGenreBtn"
 import genresMap from "../contant/genres"
 import { useState } from "react"
@@ -6,6 +6,7 @@ import { useState } from "react"
 function ExplorePage() {
 
   const[selectedGenres, setSelectedGenres] = useState([]);
+  const navigate = useNavigate();
   
   const toggleGenre = (genreId) => {
     setSelectedGenres(prev =>
@@ -15,6 +16,11 @@ function ExplorePage() {
     )
   }
 
+
+  const handleShowRecommendations = () => {
+    // Burada state'i URL'e gömüyoruz (query string gibi)
+    navigate(`/films?genres=${selectedGenres.join(",")}`)
+  }
 
 
   return (
@@ -37,7 +43,7 @@ function ExplorePage() {
        }
       </div>
 
-      <Link className="mx-auto p-4 mt-4 bg-[#3498db] text-white rounded-xl font-semibold cursor-pointer hover:transform-[translateY(-3px)] duration-200" to={"/films"}>Show Recommendations</Link>
+      <div className="mx-auto p-4 mt-4 bg-[#3498db] text-white rounded-xl font-semibold cursor-pointer hover:transform-[translateY(-3px)] duration-200" onClick={handleShowRecommendations}>Show Recommendations</div>
 
     </main>
   )
