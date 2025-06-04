@@ -1,11 +1,18 @@
+import { useDispatch } from "react-redux";
 import genresMap from "../contant/genres"
+import { addToWatchList } from "../redux/slices/watchListSlice";
 
-function FilmCard({ title , poster, genres, released_date , vote}) {
+function FilmCard({ title , poster, genres, released_date , vote, id, isRemovable = false, onRemove}) {
+  const dispatch = useDispatch();
+
 
   const getGenreName = (id) => {
     return Object.keys(genresMap).find((name) => genresMap[name] === id);
   }
 
+  const handleAdd = () => {
+    dispatch(addToWatchList({ id, title, poster, genres, released_date, vote}))
+  }
 
 
   return (
@@ -21,7 +28,22 @@ function FilmCard({ title , poster, genres, released_date , vote}) {
         <div>Filmvote : {vote}</div>
       </div>
       
-      <div className="bg-[#f0f0f0] font-medium text-center w-[80%] mx-auto p-1 rounded-xl cursor-pointer shadow-[0_5px_15px_rgba(52,152,219,0.3)] hover:transform-[translateY(-3px)] hover:bg-[#d6eaf8] duration-200">Add Watch Later</div>
+      
+
+      {
+        isRemovable ? (
+        <div
+          onClick={onRemove}
+          className="bg-red-200 hover:bg-red-400 text-black p-2 rounded-xl mt-3 cursor-pointer shadow-[0_5px_15px_rgba(52,152,219,0.3)] hover:-translate-y-1  duration-200">
+          Remove from Watchlist
+        </div>
+        ) : (
+          <div
+          onClick={handleAdd}
+          className="bg-[#f0f0f0] font-medium text-center w-[80%] mx-auto p-1 rounded-xl cursor-pointer shadow-[0_5px_15px_rgba(52,152,219,0.3)] hover:-translate-y-1 hover:bg-[#d6eaf8] duration-200">
+          Add Watch Later
+        </div>
+        )}
 
     </div>
   )

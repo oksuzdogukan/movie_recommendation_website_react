@@ -47,6 +47,7 @@ function FilmsPage() {
           return(
             <FilmCard 
             key={film.id}
+            id={film.id}
             title={film.original_title} 
             poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`} 
             genres={film.genre_ids}
