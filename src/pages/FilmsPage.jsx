@@ -24,7 +24,7 @@ function FilmsPage() {
         language: "en-US"
       }      
     })
-    console.log(response.data.results)  
+    // console.log(response.data.results)  
     setFilms(response.data.results);
 
     } catch (error) {
@@ -41,7 +41,7 @@ function FilmsPage() {
 
 
   return (
-    <main className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10 p-10'>
+    <main className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10 p-10 md:px-[200px] px-[70px]'>
       {
         (films && films.map((film) => {
           return(
