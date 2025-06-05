@@ -1,18 +1,46 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import genresMap from "../contant/genres"
 import { addToWatchList } from "../redux/slices/watchListSlice";
 import { Bounce, toast } from 'react-toastify';
 
 function FilmCard({ title , poster, genres, released_date , vote, id, isRemovable = false, onRemove}) {
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const watchList = useSelector(state => state.watchList);
 
   const getGenreName = (id) => {
     return Object.keys(genresMap).find((name) => genresMap[name] === id);
   }
 
   const handleAdd = () => {
-    dispatch(addToWatchList({ id, title, poster, genres, released_date, vote}))
+    const alreadyExist = watchList.find((item) => item.id === id);
+    if(alreadyExist){
+      // film zaten ekli
+      toast.warn(`${title} Already Exist Watch List!!!`, {
+              position: "bottom-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              transition: Bounce,
+            });
+    }else{
+      toast.info(`${title} Added Watch List!!!`, {
+              position: "bottom-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              transition: Bounce,
+            });
+            dispatch(addToWatchList({ id, title, poster, genres, released_date, vote}))
+    }
   }
 
 
@@ -53,20 +81,7 @@ function FilmCard({ title , poster, genres, released_date , vote, id, isRemovabl
         </div>
         ) : (
           <div
-          onClick={() => {
-            handleAdd();
-            toast.info(`${title} Added Watch List!!!`, {
-              position: "bottom-right",
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: false,
-              draggable: true,
-              progress: undefined,
-              theme: "dark",
-              transition: Bounce,
-            });
-          }}
+          onClick={handleAdd}
           className="bg-[#f0f0f0] font-medium text-center w-[80%] mx-auto p-1 rounded-xl cursor-pointer shadow-[0_5px_15px_rgba(52,152,219,0.3)] hover:-translate-y-1 hover:bg-[#d6eaf8] duration-200">
           Add Watch Later
         </div>

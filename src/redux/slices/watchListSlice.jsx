@@ -9,10 +9,8 @@ const watchListSlice = createSlice({
     reducers:{
         addToWatchList: (state, action) => {
             const film = action.payload
-            const exist = state.find((item => item.id === film.id)) // film zaten watchliste mi?
-            if(!exist){
-                state.push(film)
-            }
+            state.push(film)
+
             localStorage.setItem("watchList" , JSON.stringify(state));
         },
         removeFromWatchList: (state, action) => {
