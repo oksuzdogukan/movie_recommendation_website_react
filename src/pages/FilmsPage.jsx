@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import FilmCard from '../components/FilmCard';
+import MovieNotFound from '../components/MovieNotFound';
 
 function FilmsPage() {
   
@@ -41,8 +42,9 @@ function FilmsPage() {
 
 
   return (
-    <main className='grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10 p-10 md:px-[200px] px-[70px]'>
+    <main className={films.length > 0 ? "grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10 p-10 md:px-[200px] px-[70px]" : "flex justify-center"}>
       {
+        films.length > 0 ? 
         (films && films.map((film) => {
           return(
             <FilmCard 
@@ -55,7 +57,7 @@ function FilmsPage() {
             vote={film.vote_average}/>
 
           )
-        }))
+        })) : <MovieNotFound/>
       }
     
     

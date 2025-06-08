@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import FilmCard from "../components/FilmCard";
 import { removeFromWatchList } from "../redux/slices/watchListSlice";
+import MovieNotFound from "../components/MovieNotFound";
 
 function WatchlistPage() {
   const movieList = useSelector((state) => state.watchList)
@@ -10,9 +11,10 @@ function WatchlistPage() {
 
 
   return (
-    <main className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10 p-10 md:px-[200px] px-[70px]">
+    <main className={movieList.length > 0 ? "grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-10 p-10 md:px-[200px] px-[70px]" : "flex justify-center"}>
       {
-        movieList.map((film) => {
+        movieList.length > 0 ? 
+        (movieList && movieList.map((film) => {
           return(
              <FilmCard
               key={film.id}
@@ -26,9 +28,9 @@ function WatchlistPage() {
               onRemove={() => dispatch(removeFromWatchList(film.id))}
             />
           )
-        })
+          
+        })) : <MovieNotFound/>
       }
-
     </main>
   )
 }
