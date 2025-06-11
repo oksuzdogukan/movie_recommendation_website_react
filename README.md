@@ -1,12 +1,52 @@
-# React + Vite
+# 🎬 Movie Recommendation Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple and fast movie recommendation app made with **React**, **Tailwind CSS**. It uses the **TMDb API** to show movies based on the genre you choose. You can also save movies to your watchlist and remove them anytime.
 
-Currently, two official plugins are available:
+🔗 **Live Website**: [movierecommendationwebsitereact.netlify.app](https://movierecommendationwebsitereact.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Main Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-🎯 **Genre-based movie suggestions**  
+  Pick a genre and get movie recommendations right away.
+
+-📌 **Watchlist support**  
+  Add your favorite movies to a personal watchlist. Remove them anytime.
+
+-🌐 **Live movie data**  
+  Uses the TMDb API to get real and updated movie info.
+
+-⚡ **Fast and simple**  
+  Built with Vite for great performance and quick loading.
+
+-🎨 **Clean design**  
+  Styled with Tailwind CSS for a nice and responsive look.
+
+---
+
+## 🛠️ Tools and Technologies
+
+- React  
+- Tailwind CSS  
+- Vite  
+- TMDb API
+
+---
+
+## 📦 How to Run Locally
+
+You can run this app on your computer with these steps:
+
+```bash
+# 1. Clone the project
+git clone https://github.com/oksuzdogukan/movie_recommendation_website_react.git
+
+# 2. Go into the project folder
+cd movie_recommendation_website_react
+
+# 3. Install the packages
+npm install
+
+# 4. Start the app
+npm run dev
